@@ -1,0 +1,72 @@
+
+@media only screen and (max-width: 1200){
+    .sequence{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1023){
+   
+}
+
+
+
+@media only screen and (max-width: 768px){
+    .header_top{
+        display:none;
+    }
+    .navbar-toggle{
+        float: left;
+    }
+    .category{
+        display:none;
+    }
+    .branch{
+        display:none;
+    }
+    .price-filter{
+        display:none;
+    }
+    .clolr-filter{
+        display:none;
+    }
+    .product-tag{
+        display:none; 
+    }
+    .others{
+        display:none;
+    }
+    .fbl-box{
+        display:none;
+    }
+    .promotion-banner row{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 480px){
+   .option-cart{
+       float: right;
+   }
+   .search{
+       float: right;
+   }
+   .logo{
+    padding: 12px 0;
+   }
+   .logo img{
+       float: left;
+   }
+   .container_fullwidth{
+    padding-top: 0px;
+   }
+   .leftbanner{
+       display: none;
+
+   }
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .hom-slider{
+        display: none;
+    }
+}

@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+{% include "../widgets/metadata.html" %}
+<body>
+    {% include "../widgets/left_panel.html" %}
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+    {% include "../widgets/header.html" %}
+    {% block content %}
+
+    {% endblock %}
+        
+    <!-- </div>/#right-panel -->
+
+    <!-- Right Panel -->
+
+    <script src="{% static 'admin/js/vendor/jquery-2.1.4.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="{% static 'admin/js/plugins.js' %}"></script>
+    <script src="{% static 'admin/js/main.js' %}"></script>
+    
+
+    
+    <script src="{% static 'admin/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin/js/plugins.js' %}"></script>
+ 
+
+    <script src="{% static 'admin/js/lib/data-table/datatables.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/jszip.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/pdfmake.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/vfs_fonts.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/buttons.print.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/buttons.colVis.min.js' %}"></script>
+    <script src="{% static 'admin/js/lib/data-table/datatables-init.js' %}"></script>
+   
+    <script src="{% static 'admin/js/lib/chosen/chosen.jquery.min.js' %}"></script>
+    <script src="{% static 'admin/js/editor.js' %}"></script>
+    
+      
+    
+    <script>
+      jQuery(document).ready(function() {
+        jQuery(".standardSelect").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, nothing found!",
+            width: "100%"
+        });
+      }); 
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
+  <script>
+    $(document).ready(function() {
+      $("#txtEditor").Editor();
+    });
+  </script>
+  <script>
+    function  cat_pro(val){
+      var item = '';
+      $.post('/admin/ajax_post', {'val':val,'csrfmiddlewaretoken':'{{csrf_token}}'}, function(data) {
+        $('#cat_ol_con').html(data);
+          // $( "#cat_con" ).load(window.location.href+" #cat_con" );
+      });
+    }
+  </script>
+    
+</body>
+</html>

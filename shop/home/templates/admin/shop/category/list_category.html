@@ -1,0 +1,93 @@
+{% extends "admin/layouts/main.html" %}    
+{% load static %}
+{% block content %}
+<div class="breadcrumbs">
+    <div class="col-sm-4">
+        <div class="page-header float-left">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="page-header float-right">
+            <div class="page-title">
+                <ol class="breadcrumb text-right">
+                    <li><a href="/admin/">Dashboard</a></li>
+                    <li><a href="/admin/list_category">Category</a></li>
+                    <li class="active">List Category</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <strong>Add Category</strong> Form
+      </div>
+      <div class="card-body card-block">
+        <form action="/admin/add_category" method="POST" class="form-horizontal">
+          {% csrf_token %}
+          <div class="row form-group">
+            <div class="col col-md-3"><label for="hf-email" class=" form-control-label">Name Category<span style="color: red">*</span></label></div>
+            <div class="col-12 col-md-9">
+                <input type="text" id="#" name="cat_name" class="form-control">
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col col-md-3"><label for="hf-email" class=" form-control-label">ParentID<span style="color: red">*</span></label></div>
+            <div class="col-12 col-md-9">
+                <input type="text" id="#" name="parentID" class="form-control">
+            </div>
+          </div>
+          <div style="text-align: center">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <i class="fa fa-dot-circle-o"></i> Submit
+            </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+              <i class="fa fa-ban"></i> Reset
+            </button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+</div>
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-header">
+      <strong class="card-title">List Category</strong> Form
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name Category</th>
+            <th scope="col">Parent ID</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for val in category  %}
+          <tr>
+            <th scope="row">{{val.cat_id}}</th>
+            <td>{{val.cat_name}}</td>
+            <td>{{val.parentID}}</td>
+            <td>
+              <a href="/admin/delete_category/{{val.cat_id}}" title="">
+                <i class="fa fa-archive"></i>
+              </a> 
+              <a href="/admin/edit_category/{{val.cat_id}}" title="">
+                <i class="fa fa-edit"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
