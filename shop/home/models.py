@@ -13,6 +13,7 @@ class Product(models.Model):
     id = models.AutoField(primary_key='true')
     name = models.CharField(max_length=100, null= False)
     cat_id = models.IntegerField(null= False)
+    parentID = models.IntegerField(null= True, blank= True)
     price = models.FloatField(null= False)
     sale_price = models.FloatField(null= True)
     image = models.CharField(max_length= 100, null= True)

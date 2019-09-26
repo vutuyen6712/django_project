@@ -8,7 +8,9 @@ from home.models import user
 
 # Create your views here.
 def index(request):
-    return render(request,"home/shop/index.html")
+    fashion = Category.objects.all().filter(parentID=16)
+    kids = Category.objects.all().filter(parentID=15)
+    return render(request,"home/shop/index.html",{'fashion':fashion, 'kids': kids})
 
 def men_productgrid(request):
     return render(request,'home/shop/men/productgrid.html')
@@ -95,4 +97,3 @@ def ajax_post(request ):
             'cat_con': cat_con,
         }
         return HttpResponse(template.render(context, request))
-        # return redirect('page_add_product',value=cat_con)

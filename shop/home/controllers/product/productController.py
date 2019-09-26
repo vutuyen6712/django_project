@@ -53,10 +53,30 @@ def listproduct(request):
 
 def edit_product(request,id):
 	product = Product.objects.get(id=id)
-	category = Category.objects.all()
-	return render(request,"admin/shop/product/edit_product.html",{'product': product, 'category':category})
+	cat = Category.objects.all().filter(parentID=0)
+	return render(request,"admin/shop/product/edit_product.html",{'product': product, 'cat':cat})
 
 def delete_product(request,id):
 	product = Product.objects.get(id=id)
 	product.delete()
 	return redirect("/admin/list_product")
+
+def update_product(request,id):
+	product = Product.objects.get(id=id)
+	form = ProductFrom(request.POST,instance = product)
+
+	if request.method == "POST":
+		uploaded_file = request.FILES['image']
+		fs = FileSystemStorage()
+		name = fs.save(uploaded_file.name, uploaded_file)
+		uploaded_file_url = fs.url(name)
+		
+		request.POST = request.POST.copy()
+		request.POST['image'] = name
+		form = ProductFrom(request.POST)
+		
+		if form.is_valid(): 
+			form.save()
+			return redirect("/admin/list_product")
+	form = ProductFrom()
+	return render(request,"admin/shop/product/edit_product.html",{'product':product})

@@ -64,8 +64,9 @@
   </script>
   <script>
     function  cat_pro(val){
-      var item = '';
+      
       $.post('/admin/ajax_post', {'val':val,'csrfmiddlewaretoken':'{{csrf_token}}'}, function(data) {
+       
         $('#cat_ol_con').html(data);
           // $( "#cat_con" ).load(window.location.href+" #cat_con" );
       });

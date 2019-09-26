@@ -42,21 +42,20 @@ urlpatterns = [
  
     #page list category
   # path('admin/list_category',views.Admin_ListCategory,name='page list category'),
-    path('admin/add_category',categoryController.create,name='page add category'),
-    path('admin/list_category',categoryController.list,name='page list category'),
-    path('admin/edit_category/<int:id>',categoryController.edit,name='page list category'),
-    path('admin/update_category/<int:id>',categoryController.update,name='page update category'),
-    path('admin/delete_category/<int:id>',categoryController.delete,name='page deleta category'),
+    path('admin/add_category',categoryController.create,name='page_add_category'),
+    path('admin/list_category',categoryController.list,name='page_list_category'),
+    path('admin/edit_category/<int:id>',categoryController.edit,name='page_list_category'),
+    path('admin/update_category/<int:id>',categoryController.update,name='page_update_category'),
+    path('admin/delete_category/<int:id>',categoryController.delete,name='page_deleta_category'),
 
     # Add Product
     path('admin/add_product',productController.create_product,name='page_add_product'),
     # path('admin/add_post_product',productController.create_product,name='page add post_product'),
-    path('admin/list_product',productController.listproduct,name='page add product'),
-    path('admin/edit_product/<int:id>',productController.edit_product,name='page add product'),
-    path('admin/delete_product/<int:id>',productController.delete_product,name='page delete product'),
+    path('admin/list_product',productController.listproduct,name='page_list_product'),
+    path('admin/edit_product/<int:id>',productController.edit_product,name='page_edit_product'),
+    path('admin/delete_product/<int:id>',productController.delete_product,name='page_delete_product'),
+    path('admin/update_product/<int:id>',productController.update_product,name='page_update_product'),
 
-    # List Product
-    path('admin/list_product',views.Admin_ListProduct,name='page list product'),
 
     # List User
     path('admin/list_user',userController.index,name='page list user'),

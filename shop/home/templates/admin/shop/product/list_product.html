@@ -37,9 +37,11 @@
                                     <th>ID</th>
                                     <th>Product Name</th>
                                     <th>Category ID</th>
+                                    <th>ParentID</th>
                                     <th>Price</th>
                                     <th>Sale</th>
-                                    <th>picture</th>
+                                    <th>Picture</th>
+                                    <th>Description</th>
                                     <th>Edit</th>
                                 </tr>
                             </thead>
@@ -49,10 +51,12 @@
                                     <!-- <td>1</td> -->
                                     <td>{{ pro.id }}</td>
                                     <td>{{ pro.name }}</td>
-                                    <td>{{ pro.name }}</td>
+                                    <td>{{ pro.cat_id }}</td>
+                                    <td>{{ pro.parentID }}</td>
                                     <td>{{ pro.price }}</td>
                                     <td>{{ pro.price }}</td>
                                     <td><img src="/media/{{ pro.image }}" style="width: 100px; height: 100px"></td>
+                                    <td>{{ pro.content }}</td>
                                     <td >
                                         <a href="/admin/edit_product/{{ pro.id }}" title="Admin Edit Product ">
                                             <i class="fa fa-edit"></i>
