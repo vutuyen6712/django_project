@@ -62,7 +62,8 @@
         <div class="col-md-8">
             <div class="ContactForm">
                 <h5>Contact Form</h5>
-                <form>
+                <form method="POST" action="user/contact">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
                             <label>
@@ -71,7 +72,7 @@
                               *
                             </strong>
                             </label>
-                            <input class="inputfild" type="text" name="">
+                            <input class="inputfild" type="text" name="name">
                         </div>
                         <div class="col-md-6">
                             <label>
@@ -80,7 +81,7 @@
                               *
                             </strong>
                             </label>
-                            <input class="inputfild" type="email" name="">
+                            <input class="inputfild" type="email" name="email">
                         </div>
                     </div>
                     <div class="row">
@@ -91,10 +92,10 @@
                               *
                             </strong>
                             </label>
-                            <textarea class="inputfild" rows="8" name=""></textarea>
+                            <textarea class="inputfild" rows="8" name="contact"></textarea>
                         </div>
                     </div>
-                    <button class="pull-right">
+                    <button type="submit" class="pull-right">
                         Send Message
                     </button>
                 </form>

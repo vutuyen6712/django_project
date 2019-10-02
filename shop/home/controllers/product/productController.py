@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from home.models import Product
 from home.models import Category
@@ -80,3 +81,19 @@ def update_product(request,id):
 			return redirect("/admin/list_product")
 	form = ProductFrom()
 	return render(request,"admin/shop/product/edit_product.html",{'product':product})
+
+# list_cat_men
+def list_cat_men(request):
+	product_list = Product.objects.filter(cat_id=13)
+	paginator  = Paginator(product_list,12)
+	page = request.GET.get('page')
+	try:
+		product  = paginator.page(page) 
+	except PageNotAnInteger:
+		product  = paginator.page(1)
+	except EmptyPage:
+		product  = paginator.page(paginator.num_pages)
+	# product = Product.objects.filter(cat_id=id)
+	return render(request,"home/shop/men/productgrid.html",{'product':product})
+
+	

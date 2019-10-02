@@ -1,0 +1,99 @@
+
+{% extends "home/layouts/base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="hom-slider">
+    <div class="container">
+        <div id="sequence">
+            <div class="sequence-prev"><i class="fa fa-angle-left"></i></div>
+            <div class="sequence-next"><i class="fa fa-angle-right"></i></div>
+            <ul class="sequence-canvas">
+                <li class="animate-in">
+                <div class="flat-caption caption1 formLeft delay300 text-center"><span class="suphead">Paris show 2019</span></div>
+                <div class="flat-caption caption2 formLeft delay400 text-center">
+                    <h1>Collection For Winter</h1>
+                </div>
+                <div class="flat-caption caption3 formLeft delay500 text-center">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+                <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
+                <div class="flat-image formBottom delay200" data-duration="5" data-bottom="true"><img src="{% static 'home/images/slider-image-01.png' %}" alt=""></div>
+                </li>
+                <li>
+                <div class="flat-caption caption2 formLeft delay400">
+                    <h1>Collection For Winter</h1>
+                </div>
+                <div class="flat-caption caption3 formLeft delay500">
+                    <h2>Etiam velit purus, luctus vitae velit sedauctor<br>egestas diam, Etiam velit purus.</h2>
+                </div>
+                <div class="flat-button caption5 formLeft delay600"><a class="more" href="#">More Details</a></div>
+                <div class="flat-image formBottom delay200" data-bottom="true"><img src="{% static 'home/images/slider-image-02.png' %}" alt=""></div>
+                </li>
+                <li>
+                <div class="flat-caption caption2 formLeft delay400 text-center">
+                    <h1>New Fashion of 2019</h1>
+                </div>
+                <div class="flat-caption caption3 formLeft delay500 text-center">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+                <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
+                <div class="flat-image formBottom delay200" data-bottom="true"><img src="{% static 'home/images/slider-image-03.png' %}" alt=""></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--================Blog Categorie Area =================-->
+<section class="blog_categorie_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="categories_post">
+                    <img class="card-img rounded-0" src="{% static 'home/images/blogs/cat-post-1.jpg' %}" alt="post">
+                    <div class="categories_details">
+                        <div class="categories_text">
+                            <a href="#">
+                                <h5>Social Life</h5>
+                            </a>
+                            <div class="border_line"></div>
+                            <p>Enjoy your social life together</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="categories_post">
+                    <img class="card-img rounded-0" src="{% static 'home/images/blogs/cat-post-2.jpg' %}" alt="post">
+                    <div class="categories_details">
+                        <div class="categories_text">
+                            <a href="#">
+                                <h5>Politics</h5>
+                            </a>
+                            <div class="border_line"></div>
+                            <p>Be a part of politics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="categories_post">
+                    <img class="card-img rounded-0" src="{% static 'home/images/blogs/cat-post-3.jpg' %}" alt="post">
+                    <div class="categories_details">
+                        <div class="categories_text">
+                            <a href="#">
+                                <h5>Food</h5>
+                            </a>
+                            <div class="border_line"></div>
+                            <p>Let the food be finished</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!--================Blog Categorie Area =================-->
+{% endblock %}

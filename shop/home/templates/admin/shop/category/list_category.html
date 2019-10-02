@@ -76,12 +76,12 @@
             <td>{{val.cat_name}}</td>
             <td>{{val.parentID}}</td>
             <td>
-              <a href="/admin/delete_category/{{val.cat_id}}" title="">
-                <i class="fa fa-archive"></i>
-              </a> 
-              <a href="/admin/edit_category/{{val.cat_id}}" title="">
+              <a onclick="return confirm('Confirm edit this category !!!');" href="/admin/edit_category/{{val.cat_id}}" title="">
                 <i class="fa fa-edit"></i>
               </a>
+              <a onclick="return confirm('Confirm delete this category !!!')" href="/admin/delete_category/{{val.cat_id}}" title="">
+                <i class="fa fa-archive"></i>
+              </a> 
             </td>
           </tr>
           {% endfor %}

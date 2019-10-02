@@ -58,10 +58,10 @@
                                     <td><img src="/media/{{ pro.image }}" style="width: 100px; height: 100px"></td>
                                     <td>{{ pro.content }}</td>
                                     <td >
-                                        <a href="/admin/edit_product/{{ pro.id }}" title="Admin Edit Product ">
+                                        <a onclick="return confirm('Confirm edit this Product !!!');" href="/admin/edit_product/{{ pro.id }}" title="Admin Edit Product ">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="/admin/delete_product/{{ pro.id }}" title="Admin Delete Product">
+                                        <a onclick="return confirm('Confirm delete this Product !!!');" href="/admin/delete_product/{{ pro.id }}" title="Admin Delete Product">
                                             <i class="fa fa-archive"></i>
                                         </a> 
                                     </td>

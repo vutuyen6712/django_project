@@ -65,11 +65,18 @@ class user(models.Model):
     class Meta:
         db_table = "user"
 
+class admin(models.Model):
+	id = models.AutoField(primary_key='true')
+	name = models.CharField(max_length=255,null = False)
+	email =  models.CharField(max_length=255,null = False)
+	password = models.CharField(max_length=255,null = False)
+	class Meta:
+		db_table = "admin"
+
 class user_contacts(models.Model):
     id = models.AutoField(primary_key='true')
     name = models.CharField(max_length= 100, null= False)
     email = models.CharField(max_length= 100, null= False)
-    phone = models.CharField(max_length= 12, null= False)
     contact = models.TextField(null = False)
     class Meta:
         db_table = "user_contact"

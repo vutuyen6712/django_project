@@ -5,18 +5,13 @@ from django.template import loader
 from home.models import Category
 from home.models import Product
 from home.models import user
+from home.models import admin
 
 # Create your views here.
 def index(request):
     fashion = Category.objects.all().filter(parentID=16)
     kids = Category.objects.all().filter(parentID=15)
     return render(request,"home/shop/index.html",{'fashion':fashion, 'kids': kids})
-
-def men_productgrid(request):
-    return render(request,'home/shop/men/productgrid.html')
-
-def men_productlist(request):
-    return render(request,'home/shop/men/productlist.html')
 
 def men_details(request):
     return render(request,'home/shop/men/details.html')    
@@ -27,23 +22,19 @@ def women_productgrid(request):
 def women_productlist(request):
     return render(request,'home/shop/women/productlist.html')
 
+#blog
+def blog(request):
+    return render(request,'home/shop/blog.html')
+
 def contact(request):
     return render(request,'home/shop/contact.html')
 
 # Login
 def UserLogin(request):
-	cat = Category.objects.all()
-	return render(request,"home/shop/accounts/login.html",{
-			'cat':cat
-		}
-	)
+	return render(request,"home/shop/accounts/login.html")
 # register
 def UserRegister(request):
-	cat = Category.objects.all()
-	return render(request,"home/shop/accounts/register.html",{
-			'cat':cat
-		}
-	)
+	return render(request,"home/shop/accounts/register.html")
 
 def UserForgetPassword(request):
     return render(request,'home/shop/accounts/forget_password.html')
@@ -53,7 +44,10 @@ def UserChangePassword(request):
 
 #admin
 def AdminIndex(request):
-    return render(request,'admin/shop/index.html')
+	if 'admin' in request.session:
+		return render(request,"admin/shop/index.html")
+	else :
+		return render(request,"admin/shop/accounts/login.html")
 
 
 def Admin_AddProduct(request):
@@ -72,20 +66,28 @@ def Admin_ListOrder(request):
     return render(request,'admin/shop/order/list_order.html')
 
 # admin login
-def Admin_Login(request):
-    return render(request,'admin/shop/accounts/login.html')
+# Login
+def admin_login(request):
+	if request.method == "POST":
+		email = request.POST['email']
+		password = request.POST['password']
+		list_admin = admin.objects.all()
+		for x in list_admin:
+			if email == x.email and password == x.password :
+				request.session['admin'] = {
+					'id':x.id,
+					'email':x.email,
+					'name':x.name,
+				}
+				break
+	return redirect('/admin/')
+#admin logout
 
-# admin register
-def Admin_Register(request):
-    return render(request,'admin/shop/accounts/register.html')
+def admin_logout(request):
+	if 'admin' in request.session:
+		del request.session['admin']
+		return redirect('/admin/')
 
-# admin forget password
-def Admin_ForgetPassword(request):
-    return render(request,'admin/shop/accounts/forget_password.html')
-
-# admin change password
-def Admin_ChangePassword(request):
-    return render(request,'admin/shop/accounts/change_password.html')
 
 # ajax post
 def ajax_post(request ):
