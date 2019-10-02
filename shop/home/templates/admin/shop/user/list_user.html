@@ -41,7 +41,7 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Phone</th>
-                                    <th>Level</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,7 +54,14 @@
                                     <td>{{ val.first_name }}</td>
                                     <td>{{ val.last_name }}</td>
                                     <td>{{ val.phone }}</td>
-                                    <td>0</td>
+                                    <td>
+                                        <a onclick="return confirm('Confirm edit this User !!!');" href="/admin/edit_user/{{val.id}}" title="Edit User">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a onclick="return confirm('Confirm delete this User !!!')" href="/admin/delete_user/{{val.id}}" title="Delete User">
+                                            <i class="fa fa-archive"></i>
+                                        </a> 
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

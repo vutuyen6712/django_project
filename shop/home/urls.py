@@ -74,7 +74,10 @@ urlpatterns = [
 
     # List User
     path('admin/list_user',userController.index,name='page list user'),
-    
+    path('admin/edit_user/<int:id>',userController.edit_user,name='edit_user'),
+    path('admin/update_user/<int:id>',userController.update_user,name='update_user'),
+    path('admin/delete_user/<int:id>',userController.delete_user,name='update_user'),
+
     # Contact
     path('admin/contact',userController.list_contact_admin,name='list_contact'),
     path('admin/delete_contact/<int:id>',userController.delete_contact,name='delete_contact'),
