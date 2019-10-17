@@ -108,39 +108,27 @@
                     <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
                     <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a href="#">Home</a>
                         </li>
-                        <li><a href="../men/productgrid">men</a></li>
-                        <li><a href="../women/productgrid">women</a></li>
+                        {% for val in cat %}
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fashion</a>
+                            <a href="/{{val.cat_name}}/category/{{val.cat_id}}">{{val.cat_name}}</a>
                             <div class="dropdown-menu mega-menu">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <ul class="mega-menu-links">
-                                            {% for sub_menu in fashion %}
-                                            <li><a href="/home/category/{{ sub_menu.cat_id }}">{{ sub_menu.cat_name }}</a></li>
+                                            {% for val1 in cat1 %}
+                                                {% if val1.parentID == val.cat_id %}
+                                                    <li><a href="/{{val.cat_name}}/category/{{val1.cat_id}}">{{val1.cat_name}}</a></li>
+                                                {% endif %}
                                             {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </li>               
-                        <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kids</a>
-                                <div class="dropdown-menu mega-menu">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <ul class="mega-menu-links">
-                                                {% for sub_menu in kids %}
-                                                <li><a href="/home/category/{{ sub_menu.cat_id }}">{{ sub_menu.cat_name }}</a></li>
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>       
+                        {% endfor %}
                         <li><a href="/blog">blog</a></li>
                         <li><a href="/contact">contact us</a></li>
                     </ul>

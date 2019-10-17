@@ -18,13 +18,10 @@ urlpatterns = [
     path('',views.index, name="Home"),
 
     #category product
-    path('men/productlist',productController.list_cat_men, name="men_productlist"),
-
-    path('men/productgrid',productController.list_cat_men, name="men_product"),
-    
-    path('men/details',views.men_details, name="men details"),
-    path('women/productgrid',views.women_productgrid, name="women_product"),
-    path('women/productlist',views.women_productlist, name="women_productlist"),
+    path('men/category/<int:id>',productController.list_cat, name="category"),
+     path('women/category/<int:id>',productController.list_cat, name="category"),
+     path('kids/category/<int:id>',productController.list_cat, name="category"),
+     path('fashion/category/<int:id>',productController.list_cat, name="category"),
     
     
 
@@ -34,8 +31,8 @@ urlpatterns = [
     path('user/user_logout',userController.user_logout,name='user_logout'),
 
     #User Register
-    path('user/register',views.UserRegister, name="user register"),
-    path('user/create_register',userController.create,name='trang create_register'),
+    path('user/register',views.UserRegister, name="user_register"),
+    path('user/create_register',userController.create,name='user_register'),
 
     #User Forget Password
     path('user/forget_password',views.UserForgetPassword, name="user_forget_password"),

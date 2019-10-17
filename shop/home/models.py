@@ -5,7 +5,7 @@ from django.db import models
 class Category(models.Model):
     cat_id = models.AutoField(primary_key='true')
     cat_name = models.CharField(max_length=100, null= False)
-    parentID = models.IntegerField(null= True, blank= True, default='0')
+    parentID = models.IntegerField(null= False)
     class Meta:
         db_table = "category"
 
@@ -13,7 +13,7 @@ class Product(models.Model):
     id = models.AutoField(primary_key='true')
     name = models.CharField(max_length=100, null= False)
     cat_id = models.IntegerField(null= False)
-    parentID = models.IntegerField(null= True, blank= True)
+    parentID_ID = models.IntegerField(null= False)
     price = models.FloatField(null= False)
     sale_price = models.FloatField(null= True)
     image = models.CharField(max_length= 100, null= True)

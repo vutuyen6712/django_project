@@ -6,28 +6,27 @@ from home.models import Category
 from home.models import Product
 from home.models import user
 from home.models import admin
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
-    fashion = Category.objects.all().filter(parentID=16)
-    kids = Category.objects.all().filter(parentID=15)
-    return render(request,"home/shop/index.html",{'fashion':fashion, 'kids': kids})
-
-def men_details(request):
-    return render(request,'home/shop/men/details.html')    
-
-def women_productgrid(request):
-    return render(request,'home/shop/women/productgrid.html')
-
-def women_productlist(request):
-    return render(request,'home/shop/women/productlist.html')
+    cat = Category.objects.all().filter(parentID = 0)
+    cat1 = Category.objects.all().filter(~Q(parentID = 0))
+    # kids = Category.objects.all().filter(parentID=15)
+    return render(request,"home/shop/index.html",{'cat':cat,'cat1':cat1})
 
 #blog
 def blog(request):
-    return render(request,'home/shop/blog.html')
+    cat = Category.objects.all().filter(parentID = 0)
+
+    cat1 = Category.objects.all().filter(~Q(parentID = 0))
+    return render(request,'home/shop/blog.html',{'cat':cat,'cat1':cat1})
 
 def contact(request):
-    return render(request,'home/shop/contact.html')
+    cat = Category.objects.all().filter(parentID = 0)
+
+    cat1 = Category.objects.all().filter(~Q(parentID = 0))
+    return render(request,'home/shop/contact.html',{'cat':cat,'cat1':cat1})
 
 # Login
 def UserLogin(request):
@@ -90,7 +89,7 @@ def admin_logout(request):
 
 
 # ajax post
-def ajax_post(request ):
+def ajax_post(request):
     if request.is_ajax():
         val = request.POST.get('val')
         cat_con = Category.objects.filter(parentID = val)

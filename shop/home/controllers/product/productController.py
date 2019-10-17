@@ -8,6 +8,8 @@ from home.models import Category
 from home.libs.product import ProductFrom
 from home.libs.category import CategoryFrom
 
+from django.db.models import Q
+
 # def index(request):
 # 	cat = Category.objects.all()
 # 	return render(request,"admin/shop/product/product.html",{'cat':cat}) 
@@ -83,9 +85,11 @@ def update_product(request,id):
 	return render(request,"admin/shop/product/edit_product.html",{'product':product})
 
 # list_cat_men
-def list_cat_men(request):
-	product_list = Product.objects.filter(cat_id=13)
-	paginator  = Paginator(product_list,12)
+def list_cat(request,id):
+	cat = Category.objects.all().filter(parentID = 0)
+	cat1 = Category.objects.all().filter(~Q(parentID = 0))
+	product_list = Product.objects.all().filter(parentID_ID = id)
+	paginator  = Paginator(product_list,6)
 	page = request.GET.get('page')
 	try:
 		product  = paginator.page(page) 
@@ -94,6 +98,6 @@ def list_cat_men(request):
 	except EmptyPage:
 		product  = paginator.page(paginator.num_pages)
 	# product = Product.objects.filter(cat_id=id)
-	return render(request,"home/shop/men/productgrid.html",{'product':product})
+	return render(request,"home/shop/men/productgrid.html",{'product':product, 'cat':cat, 'cat1':cat1})
 
 	
